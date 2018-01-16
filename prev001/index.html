@@ -16,6 +16,22 @@
 	</ul>
   <script src="node_modules/axios/dist/axios.js"></script>
   <script src="node_modules/vue/dist/vue.js"></script>
-  <script src="index.js"></script>
+  <script>
+    let url = 'http://rapapi.org/mockjsdata/23334/index/hotList';
+      new Vue({
+              el: '#app',
+              data: {
+                  lists: null
+              },
+              created() {
+                  axios.post(url, {
+                      pageNum: 1,
+                      pageSize: 10
+                  }).then(res => {
+                      this.lists = res.data.lists
+                  })
+              }
+      })
+  </script>
 </body>
 </html>
