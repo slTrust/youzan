@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RAP</title>
+</head>
+<body>
+	<ul id="app">
+		<li v-for="list in lists" >
+			<img :src="list.img" alt="" width="200" height="100">
+			<p>{{list.name}}</p>
+			<p>{{list.price}}</p>
+		</li>
+	</ul>
+  <script src="node_modules/axios/dist/axios.js"></script>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
