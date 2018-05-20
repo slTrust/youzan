@@ -8,7 +8,9 @@ let url = {
     subList:'/category/subList',
     rank:'/category/rank',
     // search搜素接口
-    searchList:'/search/list'
+    searchList:'/search/list',
+    // 商品详情
+    details:'/goods/details'
 }
 
 //开发环境和真实环境的切换
