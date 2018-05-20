@@ -19,10 +19,13 @@
   <link rel="stylesheet" href="./css/goods_theme.css">
   <link rel="stylesheet" href="./css/goods_mars.css">
   <link rel="stylesheet" href="./css/goods_sku.css"> -->
+  <style>
+    [v-cloak]{display:none;}
+  </style>
 </head>
 
 <body class=" body-fixed-bottom default-theme">
-  <div id="app" v-if="details">
+  <div id="app" v-if="details" v-cloak>
     <div class="container wap-goods internal-purchase" style="min-height: 617px;">
       <div class="content no-sidebar">
         <div class="content-body">
