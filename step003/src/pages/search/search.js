@@ -8,6 +8,8 @@ import qs from 'qs'
 
 import mixin from 'js/mixin';
 
+import Velocity from 'velocity-animate'
+
 //解析参数
 let {keyword,id} = qs.parse(location.search.substr(1))
 
@@ -15,10 +17,11 @@ new Vue({
     el:'.container',
     data:{
         searchList:null,
-        keyword
+        keyword,
+        // 回到顶部
+        isShow:false
     },
     created(){
-        console.log(this.keyword)
         this.getSearchList()
     },
     methods:{
@@ -27,6 +30,18 @@ new Vue({
                 console.log(res)
                 this.searchList = res.data.lists;
             })
+        },
+        move(){
+            // 如果滚动距离超过100 就显示回到顶部
+            console.log(document.body.scrollTop)
+            if(document.body.scrollTop > 100){
+                this.isShow = true;
+            }else{
+                this.isShow = false;
+            }
+        },
+        toTop(){
+            Velocity(document.body, "scroll", { duration: 1000 })
         }
     },
     // 引入混入对象
