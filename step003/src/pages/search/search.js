@@ -5,8 +5,8 @@ import Vue from 'vue';
 import axiso from 'axios';
 import url from 'js/api.js';
 import qs from 'qs'
-// 加载组件
-import Foot from 'components/Foot.vue'
+
+import mixin from 'js/mixin';
 
 //解析参数
 let {keyword,id} = qs.parse(location.search.substr(1))
@@ -28,5 +28,7 @@ new Vue({
                 this.searchList = res.data.lists;
             })
         }
-    }
+    },
+    // 引入混入对象
+    mixins:[mixin]
 })

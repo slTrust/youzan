@@ -4,8 +4,7 @@ import './category.css';
 import Vue from 'vue';
 import axios from 'axios';
 import url from 'js/api.js';
-
-import Foot from 'components/Foot.vue'
+import mixin from 'js/mixin';
 
 new Vue({
     el:'#app',
@@ -53,14 +52,6 @@ new Vue({
             location.href = `search.html?keyword=${list.name}&id=${list.id}`;
         }
     },
-    components:{
-        Foot
-    },
-    //过滤器
-    filters:{
-        number(price){
-            return (price-0).toFixed(2);
-        }
-    }
-
+    // 引入混入对象
+    mixins:[mixin]
 })

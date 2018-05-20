@@ -90,7 +90,7 @@
                         </div>
                         <div class="detail">
                           <div class="title">{{list.name}}</div>
-                          <div class="price">￥{{list.price|number}}</div>
+                          <div class="price">￥{{list.price|currency}}</div>
                           <div class="recommend">
                             <span>推荐值:</span>
                             <span>{{list.recommend}}</span>
@@ -158,6 +158,7 @@
               <ul class="category-content">
                 <li class="category-item js-category-item" data-item-id="10" :data-item-name="list.name"
                   v-for="list in subData.categoryList"
+                  @click="toSearch(list)"
                 >
                   <img :src="list.image" :alt="list.name" class="category-img">
                   <span class="category-item-name">
