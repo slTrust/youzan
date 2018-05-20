@@ -6,7 +6,9 @@ let url = {
     topList:'/category/topList',
     // category二级分类
     subList:'/category/subList',
-    rank:'/category/rank'
+    rank:'/category/rank',
+    // search搜素接口
+    searchList:'/search/list'
 }
 
 //开发环境和真实环境的切换

@@ -47,6 +47,10 @@ new Vue({
             axios.post(url.rank).then(res=>{
                 this.rankData = res.data.data;
             })
+        },
+        toSearch(list){
+            // 传递keyword和id
+            location.href = `search.html?keyword=${list.name}&id=${list.id}`;
         }
     },
     components:{

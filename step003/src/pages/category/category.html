@@ -146,6 +146,7 @@
               <ul class="category-content">
                 <li class="category-item js-category-item" data-item-id="85" data-item-name="良品铺子"
                   v-for="list in subData.brandList"
+                  @click="toSearch(list)"
                 >
                   <img :src="list.image" :alt="list.name" class="category-img">
                   <span class="category-item-name">
