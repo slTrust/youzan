@@ -149,10 +149,10 @@
                       <span class="col-3 center">数量</span>
                     </div>
                     <div class="js-list b-list block block-list">
-                        <div class="block-item">
-                            <span class="col-1 c-gray-darker">111</span>
-                            <span class="col-2 c-gray-dark center">111</span>
-                            <span class="col-3 c-gray-darker center">111</span>
+                        <div class="block-item" v-for="list in dealLists">
+                            <span class="col-1 c-gray-darker">{{list.buyer}}</span>
+                            <span class="col-2 c-gray-dark center">{{list.time}}</span>
+                            <span class="col-3 c-gray-darker center">{{list.num}}</span>
                         </div>
                     </div>
                   </div>

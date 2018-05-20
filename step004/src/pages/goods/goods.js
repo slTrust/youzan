@@ -19,7 +19,8 @@ new Vue({
     data:{
         details:null,
         detailTab,
-        tabIndex:0
+        tabIndex:0,
+        dealLists:null,//成交记录
     },
     created(){
         this.getDetails()
@@ -27,12 +28,20 @@ new Vue({
     methods:{
         getDetails(){
             axios.post(url.details,{id}).then(res=>{
-                console.log(res.data.data)
                 this.details = res.data.data;
             })
         },
         changeTab(index){
             this.tabIndex = index;
+            if(index){
+                this.getDeal()
+            }
+        },
+        getDeal(){
+            axios.post(url.deal,{id}).then(res=>{
+                console.log(res.data.data.lists)
+                this.dealLists = res.data.data.lists;
+            })
         }
     },
     mixins:[mixin]

@@ -10,7 +10,9 @@ let url = {
     // search搜素接口
     searchList:'/search/list',
     // 商品详情
-    details:'/goods/details'
+    details:'/goods/details',
+    // 成交记录
+    deal:'/goods/deal'
 }
 
 //开发环境和真实环境的切换
