@@ -5,8 +5,10 @@ import Vue from 'vue';
 import axiso from 'axios';
 import url from 'js/api.js';
 // 加载组件
-import Foot from 'components/Foot.vue'
 import Swiper from 'components/Swiper.vue'
+
+import mixin from 'js/mixin';
+
 //按需引入
 import { InfiniteScroll  } from 'mint-ui';
 Vue.use(InfiniteScroll)
@@ -59,7 +61,8 @@ let app = new Vue({
         }
     },
     components:{
-        Foot,
         Swiper
-    }
+    },
+    // 引入混入对象
+    mixins:[mixin]
 })
