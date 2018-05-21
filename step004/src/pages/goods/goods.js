@@ -27,6 +27,7 @@ new Vue({
         bannerLists:null,
         skuType:1,
         showSku:false,//弹出层
+        skuNum:1,//商品购买数量
     },
     created(){
         this.getDetails()
@@ -59,6 +60,10 @@ new Vue({
         chooseSku(type){
             this.skuType = type;
             this.showSku = true;
+        },
+        changeSkuNum(num){
+            if(num<0&&this.skuNum===1) return;
+            this.skuNum += num;
         }
     },
     //弹出层出现的时候禁止内容区域滚动
