@@ -10,6 +10,7 @@ import axios from 'axios';
 import url from 'js/api.js';
 import mixin from 'js/mixin';
 import qs from 'qs'
+import Swiper from 'components/Swiper.vue'
 // 加载组件
 let {id} = qs.parse(location.search.substr(1))
 // 商品详情和 本店成交 选项卡
@@ -21,6 +22,7 @@ new Vue({
         detailTab,
         tabIndex:0,
         dealLists:null,//成交记录
+        bannerLists:null
     },
     created(){
         this.getDetails()
@@ -29,6 +31,14 @@ new Vue({
         getDetails(){
             axios.post(url.details,{id}).then(res=>{
                 this.details = res.data.data;
+                this.bannerLists = [];
+                this.details.imgs.forEach(item => {
+                    this.bannerLists.push({
+                        clickUrl:'',
+                        image:item
+                    }) 
+                });
+                console.log(this.bannerLists)
             })
         },
         changeTab(index){
@@ -39,10 +49,12 @@ new Vue({
         },
         getDeal(){
             axios.post(url.deal,{id}).then(res=>{
-                console.log(res.data.data.lists)
                 this.dealLists = res.data.data.lists;
             })
         }
     },
-    mixins:[mixin]
+    mixins:[mixin],
+    components:{
+        Swiper
+    }
 })
