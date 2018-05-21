@@ -4,6 +4,8 @@ import './goods.css'
 import './goods_theme.css'
 import './goods_mars.css'
 import './goods_sku.css'
+// 加载定义的动画
+import './goods_transition.css'
 
 import Vue from 'vue';
 import axios from 'axios';
