@@ -12,7 +12,9 @@ let url = {
     // 商品详情
     details:'/goods/details',
     // 成交记录
-    deal:'/goods/deal'
+    deal:'/goods/deal',
+    // 加入购物车
+    addCart:'/cart/add'
 }
 
 //开发环境和真实环境的切换

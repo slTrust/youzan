@@ -20,6 +20,7 @@ let detailTab = ['商品详情','本店成交']
 new Vue({
     el:'#app',
     data:{
+        id,//商品id
         details:null,
         detailTab,
         tabIndex:0,
@@ -28,6 +29,8 @@ new Vue({
         skuType:1,
         showSku:false,//弹出层
         skuNum:1,//商品购买数量
+        isAddCart:false,//是否加入购物车的标识
+        showAddMessage:false,//成功添加购物车的标识
     },
     created(){
         this.getDetails()
@@ -64,6 +67,22 @@ new Vue({
         changeSkuNum(num){
             if(num<0&&this.skuNum===1) return;
             this.skuNum += num;
+        },
+        // 加入购物车
+        addCart(){
+            axios.post(url.addCart,
+                {id,
+                number:this.skuNum
+                }).then(res=>{
+                    if(res.data.status === 200){
+                        this.showSku = false;
+                        this.isAddCart = true;
+                        this.showAddMessage = true;
+                        setTimeout(()=>{
+                            this.showAddMessage = false;
+                        },1000)
+                    }
+                })
         }
     },
     //弹出层出现的时候禁止内容区域滚动
