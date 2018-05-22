@@ -39,6 +39,15 @@ new Vue({
                 })
             }
         },
+        // 全部删除的计算属性
+        allRemoveSelected:{
+            get(){
+                
+            },
+            set(newVal){
+               
+            }
+        },
         // 结算时选中的商品和个数
         selectLists(){
             if(this.lists&&this.lists.length){
@@ -56,6 +65,10 @@ new Vue({
                 return arr;
             }
             return []
+        },
+        // 删除操作的商品个数
+        removeLists(){
+
         }
     },
     methods:{
@@ -77,9 +90,14 @@ new Vue({
                     // 店铺的可编辑状态 默认是不可以编辑的
                     shop.editing = false;
                     shop.editingMsg = '编辑';
+                    // 店铺删除时的状态
+                    shop.removeChecked = false;
+
                     shop.goodsList.forEach(good =>{
                         // 设置购物车里的商品为选中状态
                         good.checked = true;
+                        // 设置店铺里商品的删除状态
+                        good.removeChecked = false;
                     })
                 });
                 this.lists = lists;
