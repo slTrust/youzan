@@ -32,7 +32,7 @@
           <div class="js-shop-list shop-list">
             <div class="block block-order block-cart" v-for="(shop,shopIndex) in lists">
               <div class="header">
-                <div class="select-group js-select-group">
+                <div class="select-group js-select-group" @click="selectShop(shop)">
                   <!-- 店铺选中状态 -->
                   <span class="check" :class="{checked:shop.checked}"></span>
                 </div>

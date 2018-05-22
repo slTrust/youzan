@@ -56,11 +56,19 @@ new Vue({
                 this.lists = lists;
             })
         },
+        // 选中商品
         selectGood(shop,good){
             good.checked = !good.checked;
             // 店铺的选中是根据它下面的商品是否都选中、
             shop.checked = shop.goodsList.every(good=>{
                 return good.checked;
+            })
+        },
+        // 选中店铺
+        selectShop(shop){
+            shop.checked = !shop.checked;
+            shop.goodsList.forEach(good=>{
+                good.checked = shop.checked;
             })
         }
         
