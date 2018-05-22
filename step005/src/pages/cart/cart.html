@@ -34,7 +34,7 @@
               <div class="header">
                 <div class="select-group js-select-group">
                   <!-- 店铺选中状态 -->
-                  <span class="check"></span>
+                  <span class="check" :class="{checked:shop.checked}"></span>
                 </div>
                 <a class="shop-title">
                   <i class="custom-store-img">店铺：</i>
@@ -49,13 +49,17 @@
               <div>
                 <ul class="js-list block block-list block-list-cart border-0">
                   <!-- editing 为编辑状态 -->
-                  <li class="block-item block-item-cart" v-for="(good,goodIndex) in shop.goodsList">
+                  <li class="block-item block-item-cart"
+                      v-for="(good,goodIndex) in shop.goodsList">
                     <div>
-                      <div class="check-container">
-                        <span class="check"></span>
+                      <div class="check-container" @click="selectGood(good)">
+                        <!-- 选中状态的标签 -->
+                        <span class="check" :class="{checked:good.checked}"></span>
                       </div>
                       <div class="name-card clearfix">
-                        <a :href="'goods.html?id='+good.id" class="thumb js-goods-link">
+                        <!-- 商品详情暂时屏蔽  :href="'goods.html?id='+good.id" -->
+                        <a href="javascript:;" 
+                          class="thumb js-goods-link">
                           <img class="js-lazy" :src="good.image">
                         </a>
                         <div class="detail">

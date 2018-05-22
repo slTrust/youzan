@@ -21,9 +21,31 @@ new Vue({
     methods:{
         getList(){
             axios.post(url.cartLists).then(res=>{
-                this.lists = res.data.cartList
+                // this.lists = res.data.cartList;
+                // this.lists.forEach(shop => {
+                //     shop.goodsList.forEach(good =>{
+                //         // 设置购物车里的商品为选中状态
+                //         good.checked = true;
+                //     })
+                // });
+                // 这样对数据后续进行添加字段checked的时候是无法响应到数据里的(深入响应式原理)
+
+                let lists = res.data.cartList;
+                lists.forEach(shop => {
+                    // 设置店铺为选中状态(因为底下的商品都选中自然而然店铺也是选中的)
+                    shop.checked = true;
+                    shop.goodsList.forEach(good =>{
+                        // 设置购物车里的商品为选中状态
+                        good.checked = true;
+                    })
+                });
+                this.lists = lists;
             })
+        },
+        selectGood(good){
+            good.checked = !good.checked;
         }
+        
     },
     mixins:[mixin]
 })
