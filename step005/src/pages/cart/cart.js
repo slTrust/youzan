@@ -28,7 +28,12 @@ new Vue({
                 return false;
             },
             set(newVal){
-                
+                this.lists.forEach(shop=>{
+                    shop.checked = newVal;
+                    shop.goodsList.forEach(good=>{
+                        good.checked = newVal;
+                    })
+                })
             }
         }
     },
@@ -70,6 +75,10 @@ new Vue({
             shop.goodsList.forEach(good=>{
                 good.checked = shop.checked;
             })
+        },
+        // 全选
+        selectAll(){
+            this.allSelected = !this.allSelected;
         }
         
     },
