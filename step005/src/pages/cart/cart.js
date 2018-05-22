@@ -11,7 +11,9 @@ new Vue({
     el:'.container',
     data:{
         lists:null,
-        total:0 //总价
+        total:0,//总价
+        editingShop:null,
+        editingShopIndex:-1
     },
     created(){
         this.getList();
@@ -114,6 +116,8 @@ new Vue({
                     item.editingMsg = shop.editing?'':'编辑';
                 }
             })
+            this.editingShop = shop.editing?shop:null;
+            this.editingShopIndex = shop.editing?shopIndex:-1;
         }
         
     },
