@@ -16,7 +16,21 @@ new Vue({
         this.getList();
     },
     computed:{
-
+        // 全选使用计算属性
+        allSelected:{
+            get(){
+                // 购物车里的数据全部查询回来而且店铺为选中状态
+                if(this.lists&&this.lists.length){
+                    return this.lists.every(shop=>{
+                        return shop.checked;
+                    })
+                }
+                return false;
+            },
+            set(newVal){
+                
+            }
+        }
     },
     methods:{
         getList(){
