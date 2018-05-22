@@ -10,7 +10,8 @@ import mixin from 'js/mixin';
 new Vue({
     el:'.container',
     data:{
-        lists:null
+        lists:null,
+        total:0 //总价
     },
     created(){
         this.getList();
@@ -35,6 +36,27 @@ new Vue({
                     })
                 })
             }
+        },
+        // 结算时选中的商品和个数
+        selectLists(){
+            if(this.lists&&this.lists.length){
+                console.log(1)
+                let arr = [];
+                let total = 0;
+                this.lists.forEach(shop=>{
+                    shop.goodsList.forEach(good=>{
+                        if(good.checked){
+                            arr.push(good)
+                            total += good.price * good.number
+                        }
+                    })
+                })
+                console.log(2)
+                this.total = total;
+                console.log(arr)
+                return arr;
+            }
+            return []
         }
     },
     methods:{
