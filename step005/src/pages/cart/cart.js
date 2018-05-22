@@ -40,7 +40,6 @@ new Vue({
         // 结算时选中的商品和个数
         selectLists(){
             if(this.lists&&this.lists.length){
-                console.log(1)
                 let arr = [];
                 let total = 0;
                 this.lists.forEach(shop=>{
@@ -51,9 +50,7 @@ new Vue({
                         }
                     })
                 })
-                console.log(2)
                 this.total = total;
-                console.log(arr)
                 return arr;
             }
             return []
@@ -75,6 +72,9 @@ new Vue({
                 lists.forEach(shop => {
                     // 设置店铺为选中状态(因为底下的商品都选中自然而然店铺也是选中的)
                     shop.checked = true;
+                    // 店铺的可编辑状态 默认是不可以编辑的
+                    shop.editing = false;
+                    shop.editingMsg = '编辑';
                     shop.goodsList.forEach(good =>{
                         // 设置购物车里的商品为选中状态
                         good.checked = true;
@@ -101,6 +101,19 @@ new Vue({
         // 全选
         selectAll(){
             this.allSelected = !this.allSelected;
+        },
+        // 店铺的编辑
+        edit(shop,shopIndex){
+            // 当前店铺可编辑
+            shop.editing = !shop.editing;
+            shop.editingMsg = shop.editing?'完成':'编辑';
+            // 其他店铺不可编辑
+            this.lists.forEach((item,idx)=>{
+                if(shopIndex!==idx){
+                    item.editing = false;
+                    item.editingMsg = shop.editing?'':'编辑';
+                }
+            })
         }
         
     },
