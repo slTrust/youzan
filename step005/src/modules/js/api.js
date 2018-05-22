@@ -14,7 +14,13 @@ let url = {
     // 成交记录
     deal:'/goods/deal',
     // 加入购物车
-    addCart:'/cart/add'
+    addCart:'/cart/add',
+    // 购物车模块
+    cartLists:'/cart/list',
+    cartReduce:'/cart/reduce',
+    cartRemove:'/cart/remove',
+    // 删除多个
+    cartMremove:'/cart/mremove' 
 }
 
 //开发环境和真实环境的切换
