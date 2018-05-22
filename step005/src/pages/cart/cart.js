@@ -42,8 +42,12 @@ new Vue({
                 this.lists = lists;
             })
         },
-        selectGood(good){
+        selectGood(shop,good){
             good.checked = !good.checked;
+            // 店铺的选中是根据它下面的商品是否都选中、
+            shop.checked = shop.goodsList.every(good=>{
+                return good.checked;
+            })
         }
         
     },

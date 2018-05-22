@@ -52,7 +52,7 @@
                   <li class="block-item block-item-cart"
                       v-for="(good,goodIndex) in shop.goodsList">
                     <div>
-                      <div class="check-container" @click="selectGood(good)">
+                      <div class="check-container" @click="selectGood(shop,good)">
                         <!-- 选中状态的标签 -->
                         <span class="check" :class="{checked:good.checked}"></span>
                       </div>
