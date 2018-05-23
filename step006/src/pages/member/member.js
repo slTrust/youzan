@@ -15,9 +15,16 @@ let routes = [
         component:require('./components/address.vue'),
         children:[
             // 地址默认查看的是列表  所有要有个  空path指向地址列表页面all
+            // {
+            //     path:'',
+            //     component:require('./components/all.vue'),
+            // },
+
+            // 还可以重定向的方式  展示列表页面
             {
                 path:'',
-                component:require('./components/all.vue'),
+                // component:require('./components/all.vue'),
+                redirect:'all'
             },
             // 地址列表
             {
