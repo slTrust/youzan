@@ -195,10 +195,20 @@ new Vue({
                 // 如果店铺下商品为空则把店铺删除
                 if(!shop.goodsList.length){
                     this.lists.splice(shopIndex,1)
+                    this.removeShop()
                 }
 
                 // 关闭弹出层 和遮罩层
                 this.removePopup = false
+            })
+        },
+        // 删除单个店铺的操作  把编辑状态改为非编辑状态
+        removeShop(){
+            this.editingShop = null;
+            this.editingShopIndex = -1;
+            this.lists.forEach(shop =>{
+                shop.editing = false
+                shop.editingMsg = '编辑'
             })
         }
         
