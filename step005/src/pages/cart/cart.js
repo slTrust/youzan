@@ -160,6 +160,21 @@ new Vue({
             })
             this.editingShop = shop.editing?shop:null;
             this.editingShopIndex = shop.editing?shopIndex:-1;
+        },
+        // 减少商品
+        reduce(good){
+            if(good.number===1) return 
+            // 数据库里先查询还有没有货然后在进行 增加
+            axios.post(url.cartReduce,{id:good.id,number:1}).then(res=>{
+                good.number--
+            })
+        },
+        // 增加商品
+        add(good){
+            // 数据库里先查询还有没有货然后在进行 增加
+            axios.post(url.cartAdd,{id:good.id,number:1}).then(res=>{
+                good.number++
+            })
         }
         
     },

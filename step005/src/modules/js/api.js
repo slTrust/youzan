@@ -17,6 +17,7 @@ let url = {
     addCart:'/cart/add',
     // 购物车模块
     cartLists:'/cart/list',
+    cartAdd:'/cart/add',
     cartReduce:'/cart/reduce',
     cartRemove:'/cart/remove',
     // 删除多个
