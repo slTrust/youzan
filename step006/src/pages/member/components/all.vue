@@ -20,7 +20,18 @@
 </template>
 
 <script>
+    import Address from 'js/addressService.js'
     export default{
+        data(){
+            return {
+                lists:null
+            }
+        },
+        created(){
+            Address.list().then(res=>{
+                this.lists = res.data.lists
+            })
+        },
         methods:{
             toEdit(){
                 // 每个子组件都可以通过 this.$router拿到注入的路由
