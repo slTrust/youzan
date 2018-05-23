@@ -29,11 +29,13 @@ let routes = [
             // 地址列表
             {
                 path:'all',
+                name:'all',
                 component:require('./components/all.vue'),
             },
             // 地址编辑表单  新增和编辑
             {
                 path:'form',
+                name:'form',
                 component:require('./components/form.vue'),
             }
             
