@@ -21,7 +21,15 @@ let url = {
     cartReduce:'/cart/reduce',
     cartRemove:'/cart/remove',
     // 删除多个
-    cartMremove:'/cart/mremove' 
+    cartMremove:'/cart/mremove',
+
+    //地址管理
+    addressLists:'/address/list',
+    addressAdd:'/address/add',
+    addressRemove:'/address/remove',
+    addressUpdate:'/address/update',
+    addressSetDefault:'/address/setDefault'
+
 }
 
 //开发环境和真实环境的切换
