@@ -13,7 +13,9 @@ new Vue({
         lists:null,
         total:0,//总价
         editingShop:null,
-        editingShopIndex:-1
+        editingShopIndex:-1,
+        removePopup:false, //是否进行单个删除的操作
+        removeData:null //删除的商品
     },
     created(){
         this.getList();
@@ -174,6 +176,23 @@ new Vue({
             // 数据库里先查询还有没有货然后在进行 增加
             axios.post(url.cartAdd,{id:good.id,number:1}).then(res=>{
                 good.number++
+            })
+        },
+        // 删除商品
+        remove(shop,shopIndex,good,goodIndex){
+            this.removePopup = true;
+            this.removeData = {shop,shopIndex,good,goodIndex}
+        },
+        // 删除确认操作
+        removeConfirm(){
+            let {shop,shopIndex,good,goodIndex} = this.removeData;
+            axios.post(url.cartRemove,{
+                id:good.id
+            }).then(res=>{
+                // 删除本地数据里的商品
+                shop.goodsList.splice(goodIndex,1)
+                // 关闭弹出层 和遮罩层
+                this.removePopup = false
             })
         }
         
