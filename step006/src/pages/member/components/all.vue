@@ -1,7 +1,7 @@
 <template>
     <div class="container " style="min-height: 597px;">
         <div class="block-list address-list section section-first js-no-webview-block">
-            <a class="block-item js-address-item address-item " href="https://pfmarket.youzan.com/user/address/form?m_alias=3nu78u467kddj&amp;id=69150287&amp;from=">
+            <a class="block-item js-address-item address-item " @click="toEdit">
                 <div class="address-title">tony 13112345678</div>
                 <p>广东省珠海市香洲区南方软件园</p>
                 <a class="address-edit" href="javascript:;"></a>
@@ -19,4 +19,14 @@
     </div>
 </template>
 
+<script>
+    export default{
+        methods:{
+            toEdit(){
+                // 每个子组件都可以通过 this.$router拿到注入的路由
+                this.$router.push({path:'/address/form'})
+            }
+        }
+    }
+</script>
 
