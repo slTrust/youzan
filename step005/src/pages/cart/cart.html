@@ -34,7 +34,8 @@
               <div class="header">
                 <div class="select-group js-select-group" @click="selectShop(shop)">
                   <!-- 店铺选中状态 -->
-                  <span class="check" :class="{checked:shop.checked}"></span>
+                  <span class="check" :class="{checked:shop.checked}" v-show="!editingShop"></span>
+                  <span class="check" :class="{checked:shop.removeChecked}" v-show="editingShop"></span>
                 </div>
                 <a class="shop-title">
                   <i class="custom-store-img">店铺：</i>
@@ -58,7 +59,7 @@
                     <div>
                       <div class="check-container" @click="selectGood(shop,good)">
                         <!-- 选中状态的标签 -->
-                        <span class="check" :class="{checked:good.checked}"></span>
+                        <span class="check" :class="{checked:editingShop?good.removeChecked:good.checked}"></span>
                       </div>
                       <div class="name-card clearfix">
                         <!-- 商品详情暂时屏蔽  :href="'goods.html?id='+good.id" -->
@@ -162,7 +163,8 @@
             <div class="bottom-cart clear-fix">
               <div class="select-all" @click="selectAll">
                 <!-- checked为选中状态 -->
-                <span class="check" :class="{checked:allSelected}"></span> 全选
+                <span class="check" :class="{checked:editingShop?allRemoveSelected:allSelected}"></span>
+                全选
               </div>
               <!-- 显示状态 -->
               <div class="total-price" v-show="!editingShop">
