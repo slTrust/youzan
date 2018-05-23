@@ -42,10 +42,19 @@ new Vue({
         // 全部删除的计算属性
         allRemoveSelected:{
             get(){
-                
+                if(this.editingShop){
+                    return this.editingShop.removeChecked;
+                }
+                return false;
             },
             set(newVal){
-               
+                if(this.editingShop){
+                    this.editingShop.removeChecked = newVal;
+                    this.editingShop.goodsList.forEach(item=>{
+                        item.removeChecked = newVal
+                    })
+                }
+                return false;
             }
         },
         // 结算时选中的商品和个数
