@@ -77,7 +77,16 @@ new Vue({
         },
         // 删除操作的商品个数
         removeLists(){
-
+            if(this.editingShop){
+                let arr = [];
+                this.editingShop.goodsList.forEach(good=>{
+                    if(good.removeChecked){
+                        arr.push(good)
+                    }
+                })
+                return arr;
+            }
+            return []
         }
     },
     methods:{

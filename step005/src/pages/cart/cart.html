@@ -180,7 +180,7 @@
                 结算 (3)
               </button>
               <!-- 编辑状态 -->
-              <button href="javascript:;" disabled="disabled" 
+              <button href="javascript:;" :disabled="!removeLists.length" 
                 class="j-delete-goods btn font-size-14 btn-red"
                 v-show="editingShop"
               >
