@@ -105,22 +105,28 @@ new Vue({
         },
         // 选中商品
         selectGood(shop,good){
-            good.checked = !good.checked;
+            // 根据编辑状态来设置  是删除/选中的操作
+            let attr = this.editingShop ?'removeChecked':'checked';
+            good[attr] = !good[attr];
             // 店铺的选中是根据它下面的商品是否都选中、
-            shop.checked = shop.goodsList.every(good=>{
-                return good.checked;
+            shop[attr] = shop.goodsList.every(good=>{
+                return good[attr];
             })
         },
         // 选中店铺
         selectShop(shop){
-            shop.checked = !shop.checked;
+            // 根据编辑状态来设置  是删除/选中的操作
+            let attr = this.editingShop ?'removeChecked':'checked';
+            shop[attr] = !shop[attr];
             shop.goodsList.forEach(good=>{
-                good.checked = shop.checked;
+                good[attr] = shop[attr];
             })
         },
         // 全选
         selectAll(){
-            this.allSelected = !this.allSelected;
+            // 根据编辑状态来设置  是删除/选中的操作
+            let attr = this.editingShop ?'allRemoveChecked':'allSelected';
+            this[attr] = !this[attr];
         },
         // 店铺的编辑
         edit(shop,shopIndex){
