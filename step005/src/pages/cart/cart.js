@@ -191,6 +191,12 @@ new Vue({
             }).then(res=>{
                 // 删除本地数据里的商品
                 shop.goodsList.splice(goodIndex,1)
+
+                // 如果店铺下商品为空则把店铺删除
+                if(!shop.goodsList.length){
+                    this.lists.splice(shopIndex,1)
+                }
+
                 // 关闭弹出层 和遮罩层
                 this.removePopup = false
             })
