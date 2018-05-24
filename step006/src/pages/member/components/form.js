@@ -20,7 +20,16 @@ export default {
         let query = this.$route.query
         this.type = query.type;
         this.instance = query.instance;
-        console.log(this.addressData)
+
+        // 如果是编辑状态  省市区的初始化
+        if(this.type==='edit'){
+          let ad = this.instance;
+          this.provinceValue = parseInt(ad.provinceValue)
+          this.name = ad.name;
+          this.tel = ad.tel;
+          this.address = ad.address;
+          this.id = ad.id;
+        }
     },
     methods:{
       add(){
@@ -32,6 +41,7 @@ export default {
             this.$router.go(-1)
           })
         }else if(this.type ==='edit'){
+          data.id = this.id
           Address.update(data).then(res=>{
             this.$router.go(-1)
           })
@@ -51,6 +61,11 @@ export default {
         // 重置 市区
         this.cityValue = -1;
         this.districtValue = -1;
+
+        // 编辑状态下
+        if(this.type==='edit'){
+          this.cityValue = parseInt(this.instance.cityValue)
+        }
       },
       // 市 变化 
       cityValue(val){
@@ -62,6 +77,11 @@ export default {
         // 设置当前省对应的 市列表
         this.districtList = list[index].children;
         this.districtValue = -1;
+
+         // 编辑状态下
+         if(this.type==='edit'){
+          this.districtValue = parseInt(this.instance.districtValue)
+        }
       }
     }
 }
