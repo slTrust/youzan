@@ -31,6 +31,10 @@ export default {
           Address.add(data).then(res=>{
             this.$router.go(-1)
           })
+        }else if(this.type ==='edit'){
+          Address.update(data).then(res=>{
+            this.$router.go(-1)
+          })
         }
       }
     },
